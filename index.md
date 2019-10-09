@@ -98,7 +98,7 @@ process.env.USE_OPTIMIZATION && sections.push(optimization);
 
 // ...
 
-const config = Object.assign({}, ...sections);
+const config = Object.assign({}, …sections);
 ```
 
 ## Длинная цитата переносится на несколько строк
