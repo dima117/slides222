@@ -36,6 +36,29 @@ style: |
 
 ### Верхний колонтитул
 
+## Пример императивного конфига
+{:.fullscreen}
+
+```js
+// пример императивного конфига
+
+const path = require('path');
+
+const isProduction = process.env.NODE_ENV === "production";
+
+const filename = isProduction ? '[name].[contenthash].js' : '[name].js';
+const devtool = isProduction ? 'nosources-source-map' : 'eval-source-map';
+
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    filename,
+    path: path.resolve(__dirname, 'dist')
+  },
+  devtool
+};
+```
+
 ## Длинная цитата переносится на несколько строк
 {:.blockquote}
 
@@ -271,12 +294,15 @@ alert(data.join(','));
 {:.fullscreen}
 
 ```js
-// исходный код (на весь экран)
+const path = require('path');
 
-var x = 10;
-for (var i = 0; i < x; i++) {
-    console.log('hello!');
-}
+module.exports = {
+  entry: './src/index.js',
+  output: {
+    path: path.resolve(__dirname, 'dist'),
+    filename: 'bundle.js'
+  }
+};
 ```
 
 ## Контакты 
