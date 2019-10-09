@@ -63,6 +63,7 @@ module.exports = {
 {:.fullscreen}
 
 ```js
+// слои
 const defaultCfg = require('cfg/default.json');    //   {
                                                    //      host: 'localhost'
                                                    //      port: 8080
@@ -84,6 +85,8 @@ const port = process.argv[2] || config.port;       //   node app.js 8111
 {:.fullscreen}
 
 ```js
+// модульность
+
 const default = require('cfg/default.json');
 const tests = require('cfg/tests.json');
 const optimization = require('cfg/optimization.json');
