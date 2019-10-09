@@ -75,9 +75,27 @@ const envCfg = require(`cfg/${env}.json`);         //   {
                                                    //      port: 80
                                                    //   }
 
-const config = Object.assign(default, env);
+const config = Object.assign({}, default, env);
 
 const port = process.argv[2] || config.port;       //   node app.js 8111
+```
+
+## модульность
+{:.fullscreen}
+
+```js
+const default = require('cfg/default.json');
+const tests = require('cfg/tests.json');
+const optimization = require('cfg/optimization.json');
+
+const sections = [default];
+
+process.env.USE_TESTS && sections.push(tests);
+process.env.USE_OPTIMIZATION && sections.push(optimization);
+
+// ...
+
+const config = Object.assign({}, ...sections);
 ```
 
 ## Длинная цитата переносится на несколько строк
