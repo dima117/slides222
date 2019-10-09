@@ -45,7 +45,6 @@ style: |
 const path = require('path');
 
 const isProduction = process.env.NODE_ENV === "production";
-
 const filename = isProduction ? '[name].[contenthash].js' : '[name].js';
 const devtool = isProduction ? 'nosources-source-map' : 'eval-source-map';
 
@@ -57,6 +56,28 @@ module.exports = {
   },
   devtool
 };
+```
+
+
+## типы слоев
+{:.fullscreen}
+
+```js
+const defaultCfg = require('cfg/default.json');    //   {
+                                                   //      host: 'localhost'
+                                                   //      port: 8080
+                                                   //   }
+                                                   
+                                                   
+const env = process.env.NODE_ENV;                  //   "Production"
+const envCfg = require(`cfg/${env}.json`);         //   {
+                                                   //      host: 'domain.ru'
+                                                   //      port: 80
+                                                   //   }
+
+const config = Object.assign(default, env);
+
+const port = process.argv[2] || config.port;       //   node app.js 8111
 ```
 
 ## Длинная цитата переносится на несколько строк
